@@ -7,11 +7,30 @@ export default Ember.Route.extend({
 	actions: {
 		newGame: function(){
 			var now = new Date();
-			var newgame = this.store.createRecord('game',{
-				name: 'Duck Hunt',
+			var store = this.store;
+			var newgame = store.createRecord('game',{
+				name: 'New Game',
 				createdAt: now
 			});
 			newgame.save();
+			var killersArray = [
+					{id: 1,	name: "Dog", level: 1, baseCost: 10},
+					{id: 2,	name: "Mario", level: 2, baseCost: 100},
+					{id: 3, name: "Link", level: 3, baseCost: 1000}
+				];
+
+			killersArray.forEach(function(killer){
+				var newKiller = store.createRecord('killer',{
+					name: killer.name,
+					level: killer.level,
+					baseCost: killer.baseCost
+				});
+				newgame.get('killers').pushObject(newKiller);
+			});
+			newgame.save();
+		
+
+			//this.store.push('game', game);
 			
 
 			//declare killers

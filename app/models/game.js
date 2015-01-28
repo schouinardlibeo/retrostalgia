@@ -5,7 +5,7 @@ export default DS.Model.extend({
 	level: DS.attr('number', {defaultValue: 1}),
 	score: DS.attr('number', {defaultValue: 0}),
 	highscore: DS.attr('number', {defaultValue: 0}),
-	killers: DS.hasMany('killer', {async: false}),
+	killers: DS.hasMany('killer', {async: true}),
 	createdAt: DS.attr('date'),
 	lastSave: DS.attr('date')
 });
