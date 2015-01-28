@@ -6,16 +6,16 @@ export default Ember.Route.extend({
 	},
 	actions: {
 		newGame: function(){
+			var now = new Date();
 			var newgame = this.store.createRecord('game',{
 				name: 'Duck Hunt',
-				createdAt: function(){
-					return new Date();
-				}
+				createdAt: now
 			});
 			newgame.save();
 			
+
 			//declare killers
-			var pushData = {
+			/*var pushData = {
 				killers : [
 					{id: 1,	name: "Dog", level: 1, baseCost: 10},
 					{id: 2,	name: "Mario", level: 2, baseCost: 100},
@@ -24,7 +24,7 @@ export default Ember.Route.extend({
 			};
 
 			//push killers in the store (it will update the store if an older version of the game is present)
-			this.store.pushPayload(pushData);
+			this.store.pushPayload('killer', pushData); */
 
 		},
 		deleteGame: function(game){
