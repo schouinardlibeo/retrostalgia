@@ -1,5 +1,5 @@
 <section id="infobar" class="row">
-	<div class="col-md-4">Game: <span id="game">Duck Hunt</span></div>
+	<div class="col-md-4">Game: {{model.name}}</div>
 	<div class="col-md-4">Score: <span id="score">{{model.score}}</span></div>
 	<div class="col-md-4">High Score: <span id="highscore">{{model.highscore}}</span></div>
 </section>
@@ -13,16 +13,7 @@
 	</section>
 </div>
 <div class="row">
-	<section id="killers" class="col-md-8">
-		<h1>Characters</h1>
-		{{#each killer in model.killers}}
-			<div class="killer">
-				<div class="name">{{killer.name}}: {{killer.number}}</div>
-				<div class="cost">Cost: {{killer.cost}} pts</div>
-				<div class="buy"><button class="btn btn-success" {{action 'buyOne' killer}}>Buy</button>
-			</div>
-		{{/each}}
-	</section>
+	{{partial "game/killers"}}
 	<section id="achievements" class="col-md-4">
 		<h1>Milestones</h1>
 	</section>

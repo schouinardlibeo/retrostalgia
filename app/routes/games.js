@@ -16,9 +16,10 @@ export default Ember.Route.extend({
 
 			//i need to put this in a kind of reference file or something
 			var killersArray = [
-					{id: 1,	name: "Dog", level: 1, baseCost: 10},
-					{id: 2,	name: "Mario", level: 2, baseCost: 100},
-					{id: 3, name: "Link", level: 3, baseCost: 1000}
+					{id: 1,	name: "Dog", baseCost: 10},
+					{id: 2,	name: "Mario", baseCost: 100},
+					{id: 3, name: "Link", baseCost: 1000},
+					{id: 4, name: "Samus", baseCost: 10000}
 				];
 
 			killersArray.forEach(function(killer){
@@ -28,15 +29,12 @@ export default Ember.Route.extend({
 					baseCost: killer.baseCost
 				});
 				newgame.get('killers').pushObject(newKiller);
+				newKiller.save();
 			});
 			newgame.save();
-
-
-
 		},
 		deleteGame: function(game){
-			game.deleteRecord();
-			game.save();
+			game.destroyRecord();
 		},
 		loadGame: function(game){
 			this.transitionTo('game', game.get('id'));
