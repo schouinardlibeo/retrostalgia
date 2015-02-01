@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model: function(){
-		return this.store.find('game');
+		return JSON.parse(localStorage.getItem("retrostalgia"));
 	},
 	actions: {
 		newGame: function(){
@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 				createdAt: now
 			});
 
-			
+
 
 			/*killersArray.forEach(function(killer){
 				var newKiller = store.createRecord('killer',{
