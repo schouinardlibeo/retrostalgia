@@ -7,6 +7,7 @@ export default Ember.Route.extend({
 	actions: {
 		buyOne: function(killer){
 			killer.incrementProperty('number');
+			killer.save();
 		}
 	}
 });
