@@ -8,6 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route("games", {path: "/"});
   this.resource("game", {path: "game/:id"});
+  this.route("killer");
 });
 
 export default Router;

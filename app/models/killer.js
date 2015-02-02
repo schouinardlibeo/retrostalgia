@@ -8,5 +8,8 @@ export default DS.Model.extend({
 	locked: DS.attr('boolean'),
 	game: DS.belongsTo('game'),
 	enemies: DS.hasMany('enemy', {async: true}),
-	upgrades: DS.hasMany('upgrade', {async: true})
+	upgrades: DS.hasMany('upgrade', {async: true}),
+	cost: function() {
+		return Math.floor(this.get('baseCost') * Math.pow(1.1, this.get('number')));
+	}.property('baseCost','number')
 });

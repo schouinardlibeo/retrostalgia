@@ -4,16 +4,12 @@
 	<div class="col-md-4">High Score: <span id="highscore">{{model.highscore}}</span></div>
 </section>
 <div class="row">
-	<section id="clickingArea" class="col-md-8">
-		<h1>Kill Zone</h1>
-		<input type="button" onClick="killDuck()" value="Duck" class="btn btn-danger" />
-	</section>
 	<section id="modifiers" class="col-md-4">
 		<h1>Upgrades</h1>
 	</section>
 </div>
 <div class="row">
-	{{partial "game/killers"}}
+	{{render "killers" model.killers}}
 	<section id="achievements" class="col-md-4">
 		<h1>Milestones</h1>
 	</section>

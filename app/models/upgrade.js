@@ -5,5 +5,6 @@ export default DS.Model.extend({
   desc: DS.attr('string'),
   cost: DS.attr('number'),
   enabled: DS.attr('boolean'),
-  order: DS.attr('number')
+  order: DS.attr('number'),
+  killer: DS.belongsTo('killer')
 });
