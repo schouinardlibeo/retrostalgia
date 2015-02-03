@@ -8,10 +8,12 @@ export default Ember.Route.extend({
 		buyOne: function(killer){
 			//check if there is enough score to buy one
 			if(killer.get('game').get('score') > killer.get('cost')){
+				killer.get('game').decrementProperty('score', killer.get('cost'));
+				killer.get('game').save();
 				//increment the number
 				killer.incrementProperty('number');
 				killer.save();
-			}	
+			}
 		}
 	},
 	setupController: function(controller, model){

@@ -6,9 +6,11 @@
   <section>
     <h3>Kill Zone</h3>
     {{#each enemy in model.enemies}}
-      <div>{{enemy.name}}</div>
-      <div>HP: {{enemy.currentHp}}</div>
-      <div>Killed: {{enemy.killed}}</div>
+      <button class="btn btn-danger" {{action 'hit' enemy}}>
+        <div>{{enemy.name}}</div>
+        <div>HP: {{enemy.currentHp}}</div>
+        <div>Killed: {{enemy.killed}}</div>
+      </button>
     {{/each}}
   </section>
 </div>
