@@ -13,5 +13,11 @@ export default DS.Model.extend({
 	score: Ember.computed.alias('game.score'),
 	cost: function() {
 		return Math.floor(this.get('baseCost') * Math.pow(1.1, this.get('number')));
-	}.property('baseCost','number')
+	}.property('baseCost','number'),
+	unlockNextLevel: function(){
+		if(this.get('number') === 50){
+			var nextKiller = this.get('game').get('killers').findBy('refId', this.get('refId') + 1);
+			nextKiller.set('isLocked', false).save();
+		}
+	}.observes('number')
 });
