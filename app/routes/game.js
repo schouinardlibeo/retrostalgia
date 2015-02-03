@@ -7,24 +7,17 @@ export default Ember.Route.extend({
 	actions: {
 		buyOne: function(killer){
 			//check if there is enough score to buy one
-			//increment the number
-			killer.incrementProperty('number');
-			killer.save();
+			if(killer.get('game').get('score') > killer.get('cost')){
+				//increment the number
+				killer.incrementProperty('number');
+				killer.save();
+			}	
 		}
 	},
 	setupController: function(controller, model){
-		this.startAttackLoop(this.model);
-		this._super(controller, model);
-	},
-	startAttackLoop: function(model){
-		Ember.Logger.debug('starting attack loop of ', model.name);
-		setInterval(function(model) {
-			/*killer.get('enemies').then(function(enemies){
-				enemies.forEach(function(enemy){
-					enemy.decrementProperty('currentHp', killer.number);
-				});
-			}); */
-			Ember.Logger.debug('looping into game');
+		window.setInterval(function(){
+			//this is the main game loop. Do things here.
 		}, 1000);
+		this._super(controller, model);
 	}
 });

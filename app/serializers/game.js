@@ -5,10 +5,6 @@ export default DS.LSSerializer.extend(DS.EmbeddedRecordsMixin, {
     killers: {
     	serialize: 'ids',
   		deserialize: 'ids'
-  	},
-    enemies: {
-      serialize: 'ids',
-      deserialize: 'ids'
-    }
+  	}
   }
 });

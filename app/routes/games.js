@@ -13,17 +13,17 @@ export default Ember.Route.extend({
 				createdAt: now
 			});
 
-
-
 			data.killers.forEach(function(killer){
 				var newKiller = store.createRecord('killer',{
 					name: killer.name,
+					refId: killer.id,
 					baseCost: killer.baseCost
 				});
 				newgame.get('killers').pushObject(newKiller);
 				killer.enemies.forEach(function(enemy){
 					var newEnemy = store.createRecord('enemy',{
 						name: enemy.name,
+						refId: enemy.id,
 						pointsPerKill: enemy.pointsPerKill,
 						baseHp: enemy.baseHp,
 						currentHp: enemy.baseHp
@@ -33,6 +33,13 @@ export default Ember.Route.extend({
 				});
 				newKiller.save();
 			});
+
+			//unlock first hunter of the game
+			var firstKiller = newgame.get('killers').get('firstObject');
+			firstKiller.set('isLocked', false).save();
+
+			//unlock the first enemy of this hunter
+			firstKiller.get('enemies').get('firstObject').set('isLocked', false).save();
 
 			newgame.save();
 		},
