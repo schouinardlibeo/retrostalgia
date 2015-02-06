@@ -13,9 +13,8 @@
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.5",
     "qunit": "~1.17.1",
+    "bootstrap": "~3.3.2",
     "ember-localstorage-adapter": "~0.5.1",
-    "node-uuid": "1.4.1",
-    "bootstrap": "~3.3",
-    "ember-addons.bs_for_ember": "~0.7.0"
+    "node-uuid": "1.4.1"
   }
 }
