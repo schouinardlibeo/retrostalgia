@@ -8,7 +8,7 @@ export default DS.Model.extend({
   baseHp: DS.attr('number'),
   currentHp: DS.attr('number'),
   killed: DS.attr('number', {defaultValue: 0}),
-  killer: DS.belongsTo('killer'),
+  killer: DS.belongsTo('killer', {async: true}),
   isHit: function() {
     if(this.get('currentHp') <= 0){
       //get damage difference to see if multiple kill
