@@ -1,8 +1,7 @@
-<section id="infobar" class="row">
-	<div class="col-md-4">Game: {{model.name}}</div>
-	<div class="col-md-4">Score: <span id="score">{{to-exponential model.score}}</span></div>
-	<div class="col-md-4">High Score: <span id="highscore">{{to-exponential model.highscore}}</span></div>
-</section>
-<div class="row">
-	{{render "killers" model.killers}}
-</div>
+<ul class='nav nav-pills nav-stacked col-xs-3'>
+	{{#each model.killers}}
+		{{#link-to 'killer' this.id tagName="li"}}<a {{bind-attr href="view.href"}}>{{name}}</a>{{/link-to}}
+	{{/each}}
+</ul>
+
+{{outlet}}

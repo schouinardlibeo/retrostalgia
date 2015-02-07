@@ -6,7 +6,7 @@ export default DS.Model.extend({
 	refId: DS.attr('number'),
 	baseCost: DS.attr('number'),
 	multiplier: DS.attr('number', {defaultValue: 1}),
-	number: DS.attr('number', {defaultValue: 0}),
+	number: DS.attr('number', {defaultValue: 1}),
 	isLocked: DS.attr('boolean', {defaultValue: true}),
 	game: DS.belongsTo('game'),
 	enemies: DS.hasMany('enemy', {async: true}),

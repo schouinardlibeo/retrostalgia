@@ -49,6 +49,31 @@ export default Ember.Route.extend({
 		loadGame: function(game){
 			this.transitionTo('game', game.get('id'));
 		}
+	},
+	doDamage: function(enemy, damage){
+		enemy.decrementProperty('currentHp', damage);
+		enemy.save();
+	},
+	init: function(){
+		var that = this;
+		that.store.find('game').then(function(games){
+			window.setInterval(function(){
+			//this is the damage loop. Do things here.
+				games.forEach(function(game){
+					game.get('killers').then(function(killers){
+						killers.forEach(function(killer){
+							killer.get('enemies').then(function(enemies){
+								enemies.forEach(function(enemy){
+									that.doDamage(enemy, killer.get('number'));
+								});
+							});
+						});
+					});
+				});
+			}, 1000);
+		});
+
+		this._super();
 	}
 });
 

@@ -1,16 +1,16 @@
-<div class="killer col-md-4">
-  <h2>{{model.name}}</h2>
-  <div class="name">Level: {{model.number}}</div>
-  <div class="cost">Cost: {{to-exponential model.cost}} pts</div>
-  <div class="buy"><button {{bind-attr class=":btn :btn-success canBuy:enabled:disabled"}} {{action 'buyOne'}}>Buy</button>
+<div class="killer col-xs-4">
+  <h2>{{model.name}} - DPS: {{model.number}}</h2>
+  <button {{bind-attr class=":btn :btn-success canBuy:enabled:disabled"}} {{action 'buyOne'}}>
+    Upgrade DPS<br />
+    Cost: {{to-exponential model.cost}} pts
+  </button>
   <section>
-    <h3>Kill Zone</h3>
+    <h3>Enemies</h3>
     {{#each enemy in model.enemies}}
-      <button class="btn btn-danger" {{action 'hit' enemy}}>
-        <div>{{enemy.name}}</div>
-        <div>HP: {{enemy.currentHp}}</div>
+
+        <div>{{#link-to 'enemy' enemy.id}}{{enemy.name}}{{/link-to}}</div>
+        <div>HP: {{to-exponential enemy.currentHp}}</div>
         <div>Killed: {{to-exponential enemy.killed}}</div>
-      </button>
     {{/each}}
   </section>
 </div>
